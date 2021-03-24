@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enviorment
+  - Items
+  - Background
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 427867587
+    locked: 0
+  - name: NonCollidable
+    uniqueID: 3320908471
+    locked: 0
+  - name: Enviorment
+    uniqueID: 1046213103
+    locked: 0
+  - name: Player
+    uniqueID: 1308282129
+    locked: 0
+  - name: Foliage
+    uniqueID: 1506306555
     locked: 0
