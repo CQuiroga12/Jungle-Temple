@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2965057842726945038}
   - component: {fileID: 9214146258685257453}
   m_Layer: 31
-  m_Name: Legacy Platform
+  m_Name: Legacy Platform Collidable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2268,7 +2268,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &6166015842652646508
+--- !u!114 &4835569252590076381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

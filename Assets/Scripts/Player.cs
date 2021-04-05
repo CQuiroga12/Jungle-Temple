@@ -10,7 +10,7 @@ public class Player : MonoBehaviourPun
 {
     public new PhotonView photonView;
     public Rigidbody2D rb;
-    public Animator anim;
+    public Animator animator;
     public GameObject PlayerCamera;
     public SpriteRenderer sr;
 
@@ -42,15 +42,22 @@ public class Player : MonoBehaviourPun
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             jump = true;
+            animator.SetBool("IsJumping", true);
         }
     }
     private void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+    public void OnLanding(){
+
+        animator.SetBool("IsJumping", false);
     }
     
 }

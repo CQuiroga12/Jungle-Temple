@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 8437043571030651796}
   - component: {fileID: 8437043571030651797}
   - component: {fileID: -5389894370952700085}
+  - component: {fileID: 3934855299757675093}
   m_Layer: 6
   m_Name: ExplorerCharacter
   m_TagString: Untagged
@@ -563,7 +564,19 @@ MonoBehaviour:
   m_CrouchDisableCollider: {fileID: 0}
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8437043571030651796}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -581,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   photonView: {fileID: 8437043571030651797}
   rb: {fileID: 8437043571030651795}
-  anim: {fileID: 0}
+  animator: {fileID: 3934855299757675093}
   PlayerCamera: {fileID: 953431893034727847}
   sr: {fileID: 8437043571030654061}
   controller: {fileID: 8437043571030651793}
@@ -625,3 +638,22 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!95 &3934855299757675093
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437043571030654060}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f307f2e2b636456b8a0e7f3376922b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
