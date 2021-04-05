@@ -582,7 +582,7 @@ MonoBehaviour:
   photonView: {fileID: 8437043571030651797}
   rb: {fileID: 8437043571030651795}
   anim: {fileID: 0}
-  PlayerCamera: {fileID: 953431893034727847}
+  PlayerCamera: {fileID: 1415070351015399136}
   sr: {fileID: 8437043571030654061}
   controller: {fileID: 8437043571030651793}
   runSpeed: 40
