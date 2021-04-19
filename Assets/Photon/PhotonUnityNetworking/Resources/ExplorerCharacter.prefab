@@ -401,9 +401,10 @@ GameObject:
   - component: {fileID: 8437043571030651797}
   - component: {fileID: -5389894370952700085}
   - component: {fileID: 3934855299757675093}
+  - component: {fileID: 4473304284463833125}
   m_Layer: 6
   m_Name: ExplorerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -657,3 +658,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4473304284463833125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437043571030654060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c300e3904e168a46a64ee4e1af3ff71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPoints: 10
+  currentHealth: 0
+  flashTime: 0.2
+  playerHeadCollider: {fileID: 8437043571030651792}
+  playerFeetCollider: {fileID: 8437043571030651799}
+  rb2d: {fileID: 8437043571030651795}
+  sprite: {fileID: 8437043571030654061}
