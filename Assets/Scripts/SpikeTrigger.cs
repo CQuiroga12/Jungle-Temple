@@ -23,8 +23,8 @@ public class SpikeTrigger : MonoBehaviour
             playerHealth.Damage(damage);
 
 
-            StartCoroutine(playerHealth.Knockback(knockbackDuration * Mathf.Sign((playerHealth.transform.position.x - collision.transform.position.x)),
-            knockbackPowerX, knockbackPowerY,
+            StartCoroutine(playerHealth.Knockback(knockbackDuration,
+            knockbackPowerX * Mathf.Sign((playerHealth.transform.position.x - collision.transform.position.x)), knockbackPowerY,
             playerHealth.transform.position));
 
             StartCoroutine(playerHealth.FlashRed());
