@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using System;
 
-public class Player : MonoBehaviourPun
+public class PlayerOne : MonoBehaviourPun
 {
     public new PhotonView photonView;
     public Rigidbody2D rb;
