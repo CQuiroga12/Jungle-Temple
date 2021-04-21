@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3240086546511354996}
   - component: {fileID: 8137770270585301235}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: CM vcam2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6920499389223954761}
   - component: {fileID: 6637603758615741701}
   m_Layer: 0
-  m_Name: PlayerCamera
+  m_Name: PlayerCamera2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415070351015399136}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &6920499389223954761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 3934855299757675093}
   - component: {fileID: 4473304284463833125}
   m_Layer: 6
-  m_Name: ExplorerCharacter
+  m_Name: EC_Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4463773382622729126, guid: 4a1017018140f18418c9aad30b13f317, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5100064, g: 0.990566, b: 0.4438857, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
