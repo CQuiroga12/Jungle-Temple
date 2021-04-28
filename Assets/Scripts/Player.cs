@@ -22,13 +22,14 @@ public class Player : MonoBehaviourPun
 
     bool jump = false;
 
+    public bool stunned = false;
+    public bool interactInput = false;
 
-    private void Awake()
+    private void Start()
     {
-        //Activates camera if it is "your" view in photon
         if(photonView.IsMine)
         {
-            PlayerCamera.SetActive(true);
+            animator = GetComponent<Animator>();
         }
     }
 
@@ -54,13 +55,27 @@ public class Player : MonoBehaviourPun
             jump = true;
             animator.SetBool("IsJumping", true);
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            interactInput = true;
+            Debug.Log("ButtonDown");
+        }
+        else
+        {
+            interactInput = false;
+        }
     }
     private void FixedUpdate()
     {
-        //using the CharacterController variable 'controller', .Move gives velocity to character rigidbody
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
-        jump = false;
-    }
+        if (photonView.IsMine)
+        {
+            if (stunned) { horizontalMove = 0; }
+            //using the CharacterController variable 'controller', .Move gives velocity to character rigidbody
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
+        }
+    } 
     
     public void OnLanding(){
 

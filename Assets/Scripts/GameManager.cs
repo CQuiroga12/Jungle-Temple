@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameCanvas;
     public GameObject SceneCamera;
     public int PlayerCount = 0;
+    CameraFollow cameraFollow;
 
     private void Awake()
     {
@@ -17,19 +18,19 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnPlayer()
     {
+        cameraFollow = FindObjectOfType<CameraFollow>();
         float randomValue = Random.Range(-1f, 1f);
         if (PlayerCount == 0){
             Debug.Log("Player1 Spawning");
-            PhotonNetwork.Instantiate("EC_Player1", new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
-            Debug.Log("Player1 Spawned");
             GameCanvas.SetActive(false);
             SceneCamera.SetActive(false);
             PlayerCount++;
         } else {
             Debug.Log("Player2 Spawning");
-            PhotonNetwork.Instantiate("EC_Player2", new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
-            Debug.Log("Player2 Spawned");
         }
+        GameObject Player = PhotonNetwork.Instantiate("EC_Player1", new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
+        cameraFollow.SetCameraTarget(Player.transform);
+        Debug.Log("Player Spawned");
     }
 
 }

@@ -13,7 +13,10 @@ public class MenuController : MonoBehaviourPunCallbacks
     [SerializeField] private InputField CreateGameInput;
     [SerializeField] private InputField JoinGameInput;
 
-
+    private void Awake()
+    {
+        Connect();
+    }
     public void Connect()
     {
         // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
