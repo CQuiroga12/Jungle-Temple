@@ -7,16 +7,18 @@ public class PlayerHealth : MonoBehaviour
 {
     public float hitPoints;
     public float currentHealth;
-    public float flashTime;
-    public Collider2D playerHeadCollider;
-    public Collider2D playerFeetCollider;
+    public float stunnedTime;
     public Rigidbody2D rb2d;
     public SpriteRenderer sprite;
+    public Player playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = hitPoints;
+        rb2d = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        playerScript = GetComponent<Player>();
     }
 
     public void Damage(int dmg)
@@ -24,12 +26,14 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= dmg;
     }
 
-    public IEnumerator Knockback(float knockbackDuration, float knockbackPowerX, float knockbackPowerY, Vector2 knockbackDirection){
+    public IEnumerator Knockback(float knockbackDuration, float knockbackX, float knockbackY){
 
-        float timer = 0;
-        while(knockbackDuration > timer){
+        float timer = 0.0f;
+        
+        while (knockbackDuration > timer){
             timer += Time.deltaTime;
-            rb2d.AddForce(new Vector2(knockbackDirection.x * knockbackPowerX, knockbackDirection.y * knockbackPowerY));
+
+            rb2d.AddForce(new Vector2(knockbackX, knockbackY));
         }
 
         yield return 0;
@@ -38,8 +42,10 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator FlashRed()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(flashTime);
+        playerScript.stunned = true;
+        yield return new WaitForSeconds(stunnedTime);
         sprite.color = Color.white;
+        playerScript.stunned = false;
     }
 
 }

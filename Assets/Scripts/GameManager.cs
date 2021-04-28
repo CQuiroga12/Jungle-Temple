@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerPrefab;
     public GameObject GameCanvas;
     public GameObject SceneCamera;
+    CameraFollow cameraFollow;
+    public Vector2 spawnPosition;
 
     private void Awake()
     {
@@ -16,11 +18,19 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnPlayer()
     {
-        float randomValue = Random.Range(-1f, 1f);
-
-        PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector2(this.transform.position.x * randomValue, this.transform.position.y), Quaternion.identity, 0);
+        cameraFollow = FindObjectOfType<CameraFollow>();
         GameCanvas.SetActive(false);
         SceneCamera.SetActive(false);
+        if (PhotonNetwork.CountOfPlayersInRooms == 0){
+            Debug.Log("Player1 Spawning");
+            spawnPosition = GameObject.Find("Player1Spawn").transform.position;
+        } else {
+            Debug.Log("Player2 Spawning");
+            spawnPosition = GameObject.Find("Player2Spawn").transform.position;
+        }
+        GameObject Player = PhotonNetwork.Instantiate("EC_Player1", spawnPosition, Quaternion.identity, 0);
+        cameraFollow.SetCameraTarget(Player.transform);
+        Debug.Log("Player Spawned");
     }
 
 }
