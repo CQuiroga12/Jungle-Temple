@@ -25,7 +25,6 @@ public class PlatformEnabler : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("WTFF");
             playerScript = collision.gameObject.GetComponent<Player>();
             contact = true;
         }
@@ -33,7 +32,6 @@ public class PlatformEnabler : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("JGJGJ");
         contact = false;
     }
 
