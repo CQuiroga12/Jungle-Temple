@@ -59,7 +59,6 @@ public class Player : MonoBehaviourPun
         if (Input.GetKeyDown(KeyCode.E))
         {
             interactInput = true;
-            Debug.Log("ButtonDown");
         }
         else
         {
