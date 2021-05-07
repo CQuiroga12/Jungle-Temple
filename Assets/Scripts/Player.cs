@@ -13,8 +13,9 @@ public class Player : MonoBehaviourPun
     public Animator animator;
     public GameObject PlayerCamera;
     public SpriteRenderer sr;
-
+    public PhotonTransformView ptv;
     public CharacterController2D controller;
+    public GameObject thisPlayer;
 
     public float runSpeed = 40f;
 
@@ -29,7 +30,9 @@ public class Player : MonoBehaviourPun
     {
         if(photonView.IsMine)
         {
-            animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();   
+        } else{
+            rb.simulated = false;
         }
     }
 
