@@ -7,8 +7,8 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
 
     public Vector3 cameraOffset;
-    [Range(0.01f, 1.0f)]
 
+    [Range(0.01f, 1.0f)]
     public float SmoothFactor = 0.5f;
 
     private void Awake()

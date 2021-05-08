@@ -21,15 +21,17 @@ public class GameManager : MonoBehaviour
         cameraFollow = FindObjectOfType<CameraFollow>();
         GameCanvas.SetActive(false);
         SceneCamera.SetActive(false);
-        if (PhotonNetwork.CountOfPlayersInRooms == 0){
-            Debug.Log("Player1 Spawning");
-            spawnPosition = GameObject.Find("Player1Spawn").transform.position;
-        } else {
+        if (FindObjectsOfType<Player>().Length == 1){
             Debug.Log("Player2 Spawning");
             spawnPosition = GameObject.Find("Player2Spawn").transform.position;
+            GameObject Player = PhotonNetwork.Instantiate("EC_PlayerGreen", spawnPosition, Quaternion.identity, 0);
+            cameraFollow.SetCameraTarget(Player.transform);
+        } else {
+            Debug.Log("Player2 Spawning");
+            spawnPosition = GameObject.Find("Player1Spawn").transform.position;
+            GameObject Player = PhotonNetwork.Instantiate("EC_PlayerBlue", spawnPosition, Quaternion.identity, 0);
+            cameraFollow.SetCameraTarget(Player.transform);
         }
-        GameObject Player = PhotonNetwork.Instantiate("EC_Player1", spawnPosition, Quaternion.identity, 0);
-        cameraFollow.SetCameraTarget(Player.transform);
         Debug.Log("Player Spawned");
     }
 

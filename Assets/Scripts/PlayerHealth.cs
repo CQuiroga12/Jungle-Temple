@@ -11,10 +11,12 @@ public class PlayerHealth : MonoBehaviour
     public Rigidbody2D rb2d;
     public SpriteRenderer sprite;
     public Player playerScript;
+    public Color thisColor;
 
     // Start is called before the first frame update
     void Start()
     {
+        thisColor = sprite.color;
         currentHealth = hitPoints;
         rb2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -44,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         sprite.color = Color.red;
         playerScript.stunned = true;
         yield return new WaitForSeconds(stunnedTime);
-        sprite.color = Color.white;
+        sprite.color = thisColor;
         playerScript.stunned = false;
     }
 

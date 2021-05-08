@@ -419,7 +419,7 @@ namespace Photon.Pun
 
             if (PhotonNetwork.LogLevel >= PunLogLevel.Full)
             {
-                Debug.Log("Received RPC: " + inMethodName);
+                //Debug.Log("Received RPC: " + inMethodName);
             }
 
 
@@ -792,7 +792,7 @@ namespace Photon.Pun
                 //Debug.LogWarning("Destroy " + instantiationId + " creator " + creatorId, go);
                 if (!viewZero.IsMine)
                 {
-                    Debug.LogError("Failed to 'network-remove' GameObject. Client is neither owner nor MasterClient taking over for owner who left: " + viewZero);
+                    //Debug.LogError("Failed to 'network-remove' GameObject. Client is neither owner nor MasterClient taking over for owner who left: " + viewZero);
                     foundPVs.Clear();   // as foundPVs is re-used, clean it to avoid lingering references
                     return;
                 }
@@ -1207,7 +1207,7 @@ namespace Photon.Pun
 
             if (PhotonNetwork.LogLevel >= PunLogLevel.Full)
             {
-                Debug.Log("Sending RPC \"" + methodName + "\" to target: " + target + " or player:" + player + ".");
+                //Debug.Log("Sending RPC \"" + methodName + "\" to target: " + target + " or player:" + player + ".");
             }
 
 

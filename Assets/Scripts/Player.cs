@@ -18,7 +18,7 @@ public class Player : MonoBehaviourPun
     public GameObject thisPlayer;
 
     public float runSpeed = 40f;
-
+    public string color;
     float horizontalMove = 0f;
 
     bool jump = false;
@@ -59,7 +59,7 @@ public class Player : MonoBehaviourPun
             animator.SetBool("IsJumping", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E))
         {
             interactInput = true;
         }
