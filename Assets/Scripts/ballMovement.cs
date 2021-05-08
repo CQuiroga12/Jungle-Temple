@@ -7,16 +7,19 @@ using UnityEngine;
 public class ballMovement : MonoBehaviour
 {
     public Rigidbody2D thisRb;
-    public float speed;
+    public double speed;
     public string color;
     public PhotonView pv;
+    public scoreCount scoreKeeper;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreKeeper = FindObjectOfType<scoreCount>();
         pv = gameObject.GetComponent<PhotonView>();
-        speed *= UnityEngine.Random.Range(0.8f, 1.75f);
-        thisRb.AddForce(Vector2.right * speed);
+        speed *= UnityEngine.Random.Range(0.8f, 2.0f);
+        speed += scoreKeeper.speedIncrease;
+        thisRb.AddForce(Vector2.right * (float)speed);
     }
 
     // Update is called once per frame
@@ -47,6 +50,7 @@ public class ballMovement : MonoBehaviour
         try 
         { 
             PhotonNetwork.Destroy(pv);
+            FindObjectOfType<scoreCount>().totalDestroyed++;
         }
         catch (Exception) { }
        

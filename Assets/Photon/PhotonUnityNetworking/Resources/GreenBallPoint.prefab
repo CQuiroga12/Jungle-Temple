@@ -144,6 +144,7 @@ MonoBehaviour:
   speed: 160
   color: Green
   pv: {fileID: 0}
+  scoreKeeper: {fileID: 0}
 --- !u!114 &3312607236171449727
 MonoBehaviour:
   m_ObjectHideFlags: 0

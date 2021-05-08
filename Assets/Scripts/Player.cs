@@ -26,6 +26,8 @@ public class Player : MonoBehaviourPun
     public bool stunned = false;
     public bool interactInput = false;
 
+    public bool interactInputLong;
+
     private void Start()
     {
         if(photonView.IsMine)
@@ -59,13 +61,22 @@ public class Player : MonoBehaviourPun
             animator.SetBool("IsJumping", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKey(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             interactInput = true;
         }
         else
         {
             interactInput = false;
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            interactInputLong = true;
+        }
+        else
+        {
+            interactInputLong = false;
         }
     }
     private void FixedUpdate()

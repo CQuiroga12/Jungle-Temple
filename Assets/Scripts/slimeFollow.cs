@@ -48,7 +48,7 @@ public class slimeFollow : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && playerScript.interactInput)
+        if (collision.gameObject.CompareTag("Player") && playerScript.interactInputLong)
         {
             targetHolder = collision.gameObject.GetComponent<Transform>();
             PV.RPC("setSlimeTarget", RpcTarget.All);

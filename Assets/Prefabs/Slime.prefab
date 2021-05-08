@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e03fe0d7bf005d408a85bb1de65ca1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchForce: 29.45
+  launchForce: 30
   animator: {fileID: 7532142385805979144}
 --- !u!114 &7532142385805979150
 MonoBehaviour:
