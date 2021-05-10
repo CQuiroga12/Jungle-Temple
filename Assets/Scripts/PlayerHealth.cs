@@ -9,9 +9,12 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public float stunnedTime;
     public Rigidbody2D rb2d;
+    public Transform thisTransform;
     public SpriteRenderer sprite;
     public Player playerScript;
     public Color thisColor;
+    public GameObject checkPoint;
+    public scoreCount scoreCount;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,23 @@ public class PlayerHealth : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         playerScript = GetComponent<Player>();
+        thisTransform = GetComponent<Transform>();
+        scoreCount = FindObjectOfType<scoreCount>();
+    }
+
+    private void Update()
+    {
+        if(scoreCount.gameLost)
+        {
+            StartCoroutine(FlashRed());
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("CheckPoint"))
+        {
+            checkPoint = collision.gameObject;
+        }
     }
 
     public void Damage(int dmg)
@@ -48,6 +68,8 @@ public class PlayerHealth : MonoBehaviour
         yield return new WaitForSeconds(stunnedTime);
         sprite.color = thisColor;
         playerScript.stunned = false;
+        yield return new WaitForSeconds(0.05f);
+        thisTransform.position = checkPoint.transform.position;
     }
 
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BallDespawn
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

@@ -736,7 +736,7 @@ MonoBehaviour:
   pv: {fileID: 3783826187375944220}
   thisRb: {fileID: 3783826187375944217}
   cooldown: 0
-  exitForce: 750
+  exitForce: 350
 --- !u!114 &3783826187375944220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,7 +789,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5290975, y: 0.060661316}
+  m_Offset: {x: 0.12992465, y: 0.060639143}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -800,7 +800,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.953545, y: 5.73985}
+  m_Size: {x: 6.586441, y: 7.246214}
   m_EdgeRadius: 0
 --- !u!1 &3783826188140886178
 GameObject:

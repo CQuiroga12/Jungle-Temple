@@ -17,6 +17,7 @@ public class slimeFollow : MonoBehaviour
     public GameObject attachedPlayer;
     private Transform targetHolder;
     public bool equipped = false;
+    public scoreCount scoreCount;
     private PhotonView PV;
     
 
@@ -70,6 +71,10 @@ public class slimeFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(scoreCount.gameWon)
+        {
+            thisTransform.gameObject.SetActive(false);
+        }
         if(equipped)
         {
             PV.RPC("slimeTracker", RpcTarget.All);

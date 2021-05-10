@@ -15,13 +15,12 @@ public class SpikeTrigger : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            Debug.Log("HIT HIT HIT");
+
             playerHealth.Damage(damage);
             float xDirection = Mathf.Sign(playerHealth.transform.position.x - collision.GetContact(0).point.x);
             StartCoroutine(playerHealth.Knockback(knockbackDuration, knockbackPowerX * xDirection, knockbackPowerY));
 
             StartCoroutine(playerHealth.FlashRed());
-            
         }
     }
 }

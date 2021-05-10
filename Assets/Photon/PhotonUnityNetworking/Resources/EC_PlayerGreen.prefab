@@ -297,11 +297,13 @@ MonoBehaviour:
   ptv: {fileID: 0}
   controller: {fileID: 8437043571030651793}
   thisPlayer: {fileID: 0}
+  DialogueManager: {fileID: 0}
   runSpeed: 40
   color: Green
   stunned: 0
   interactInput: 0
   interactInputLong: 0
+  qkeyDown: 0
 --- !u!114 &8437043571030651797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,9 +379,12 @@ MonoBehaviour:
   currentHealth: 0
   stunnedTime: 0.3
   rb2d: {fileID: 8437043571030651795}
+  thisTransform: {fileID: 0}
   sprite: {fileID: 8437043571030654061}
   playerScript: {fileID: 8437043571030651796}
   thisColor: {r: 0, g: 0, b: 0, a: 0}
+  checkPoint: {fileID: 0}
+  scoreCount: {fileID: 0}
 --- !u!114 &7982558989746337500
 MonoBehaviour:
   m_ObjectHideFlags: 0

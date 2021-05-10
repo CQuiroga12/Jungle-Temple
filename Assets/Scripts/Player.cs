@@ -16,6 +16,7 @@ public class Player : MonoBehaviourPun
     public PhotonTransformView ptv;
     public CharacterController2D controller;
     public GameObject thisPlayer;
+    public DialogueManger DialogueManager;
 
     public float runSpeed = 40f;
     public string color;
@@ -28,6 +29,8 @@ public class Player : MonoBehaviourPun
 
     public bool interactInputLong;
 
+    public bool qkeyDown;
+
     private void Start()
     {
         if(photonView.IsMine)
@@ -36,6 +39,8 @@ public class Player : MonoBehaviourPun
         } else{
             rb.simulated = false;
         }
+
+        DialogueManager = FindObjectOfType<DialogueManger>().GetComponent<DialogueManger>();
     }
 
     private void Update()
@@ -61,7 +66,7 @@ public class Player : MonoBehaviourPun
             animator.SetBool("IsJumping", true);
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space))
         {
             interactInput = true;
         }
@@ -78,15 +83,27 @@ public class Player : MonoBehaviourPun
         {
             interactInputLong = false;
         }
+
+        if(Input.GetKey(KeyCode.Q))
+        {
+            qkeyDown = true;
+        }
+        else
+        {
+            qkeyDown = false;
+        }
     }
     private void FixedUpdate()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && DialogueManager.sentences.Count == 0)
         {
             if (stunned) { horizontalMove = 0; }
             //using the CharacterController variable 'controller', .Move gives velocity to character rigidbody
             controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
             jump = false;
+        } else if(DialogueManager.sentences.Count != 0)
+        {
+            rb.velocity = Vector3.zero;
         }
     } 
     
