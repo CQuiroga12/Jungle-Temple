@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
     public Dialogue dialogue;
     public DialogueManger DialogueMangager;
     public bool firstSign;
@@ -24,6 +23,7 @@ public class DialogueTrigger : MonoBehaviour
                 } else
                 {
                     DialogueMangager.StartDialogue(dialogue);
+                    DialogueMangager.dialogueSource = gameObject;
                 }
             }
         }
@@ -51,5 +51,10 @@ public class DialogueTrigger : MonoBehaviour
             player = null;
         }
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        contact = false;
+        player = null;
     }
 }

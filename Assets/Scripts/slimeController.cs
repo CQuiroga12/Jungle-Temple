@@ -19,4 +19,9 @@ public class slimeController : MonoBehaviour
             contact = false;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        contact = false;
+    }
 }

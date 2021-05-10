@@ -13,6 +13,7 @@ public class scoreCount : MonoBehaviour
     public GameObject exitSlime;
     public GameObject lastSlime1, lastSlime2;
     public bool gameLost, gameWon;
+    public GameObject player1, player2;
 
     // Update is called once per frame
     void Update()
@@ -20,6 +21,16 @@ public class scoreCount : MonoBehaviour
         if(FindObjectOfType<trampolineCamera>().thisCamera.activeSelf)
         {
             startStage = true;
+        }
+
+        if (gameLost)
+        {
+            score = 0;
+            totalDestroyed = 0;
+            totalSpawned = 0;
+            StartCoroutine(player1.GetComponent<PlayerHealth>().FlashRed());
+            StartCoroutine(player2.GetComponent<PlayerHealth>().FlashRed());
+            gameLost = false;
         }
 
         if (totalDestroyed + totalSpawned == 800)
@@ -36,14 +47,6 @@ public class scoreCount : MonoBehaviour
             {
                 gameLost = true;
             }
-        }
-
-        if(gameLost)
-        {
-            score = 0;
-            totalDestroyed = 0;
-            totalSpawned = 0;
-            gameLost = false;
         }
     }
 

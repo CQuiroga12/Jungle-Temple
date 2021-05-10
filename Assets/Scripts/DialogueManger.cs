@@ -10,6 +10,7 @@ public class DialogueManger : MonoBehaviour
     public Queue<string> sentences;
     public int sentenceCount;
     public bool active;
+    public GameObject dialogueSource;
     void Start()
     {
         sentences = new Queue<string>();
@@ -26,7 +27,6 @@ public class DialogueManger : MonoBehaviour
         canvas.SetActive(true);
         active = true;
         sentences.Clear();
-
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -53,6 +53,6 @@ public class DialogueManger : MonoBehaviour
     {
         canvas.SetActive(false);
         active = false;
-        Debug.Log("End of Convo");
+        sentences.Clear();
     }
 }

@@ -26,15 +26,16 @@ public class PlayerHealth : MonoBehaviour
         playerScript = GetComponent<Player>();
         thisTransform = GetComponent<Transform>();
         scoreCount = FindObjectOfType<scoreCount>();
-    }
-
-    private void Update()
-    {
-        if(scoreCount.gameLost)
+        
+        if(scoreCount.player1 == null)
         {
-            StartCoroutine(FlashRed());
+            scoreCount.player1 = gameObject;
+        } else
+        {
+            scoreCount.player2 = gameObject;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("CheckPoint"))
