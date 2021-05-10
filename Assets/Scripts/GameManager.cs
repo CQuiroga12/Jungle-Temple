@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
+//Spawns Players and sets a main camera to each of them
 public class GameManager : MonoBehaviour
 {
     public GameObject PlayerPrefab;
@@ -12,10 +13,14 @@ public class GameManager : MonoBehaviour
     CameraFollow cameraFollow;
     public Vector2 spawnPosition;
 
+    //Activates main canvas that contains start button
     private void Awake()
     {
         GameCanvas.SetActive(true);
     }
+
+    //Insantiates a player and sets a camera to follow them
+    //Spawn Location is based on player spawn order
     public void SpawnPlayer()
     {
         cameraFollow = FindObjectOfType<CameraFollow>();

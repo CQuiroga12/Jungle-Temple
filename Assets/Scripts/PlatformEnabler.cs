@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Photon.Pun;
 
+/*Activates and deactivates the colliders two set tilemaps
+ * and changes there colors to be more faded or more solid based on it
+ */
 public class PlatformEnabler : MonoBehaviour
 {
     public Player playerScript;
@@ -21,6 +24,8 @@ public class PlatformEnabler : MonoBehaviour
         SetA.GetComponent<TilemapCollider2D>().enabled = false;
         SetA.color = new Color(SetA.color.r, SetA.color.g, SetA.color.b, 0.1f);
     }
+
+    //Checks for contact with player and gets Player script from collision
     private void OnTriggerEnter2D (Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -35,6 +40,8 @@ public class PlatformEnabler : MonoBehaviour
         contact = false;
     }
 
+    //If player is in contact and inputting then calls RPC
+    //to switch the two tilesets active state
     private void Update()
     {
         if(contact && playerScript.interactInput)
@@ -44,10 +51,10 @@ public class PlatformEnabler : MonoBehaviour
 
     }
 
+    //RPC of 2 tilemap sets that ensures server wide changes to active state of colliders
     [PunRPC]
     void swapPlatform()
     {
-        Debug.Log("INPUTED");
         if (currentSet)
         {
             SetB.GetComponent<Rigidbody2D>().Sleep();

@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class ballMovement : MonoBehaviour
 {
+    /* Tracks the balls for collisions of either player or a wall that destroys them
+     * Calls a RPC function that destroys itself upon collision of either 
+     * also adds to Score keeper's score count upon destruction
+     */
     public Rigidbody2D thisRb;
     public double speed;
     public string color;
@@ -22,12 +26,9 @@ public class ballMovement : MonoBehaviour
         thisRb.AddForce(Vector2.right * (float)speed);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //First check if collision is with player and then if its the
+    //correct player based on color. Then check if collision is on 
+    //wall that destroys the balls. Call a RPC method to destroy and add score
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -44,6 +45,7 @@ public class ballMovement : MonoBehaviour
         }
     }
 
+    //Destroy the ball with RPC to ensure serverwide destruction
     [PunRPC]
     void destroyBall()
     {

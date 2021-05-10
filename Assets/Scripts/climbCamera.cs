@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* Switches the active camera when a trigger is collided
+ * Has a camera to switch too along with checking 3 other cameras
+ * before setting the main camera active
+ */
 public class climbCamera : MonoBehaviour
 {
     public GameObject mainCamera;
@@ -11,13 +16,7 @@ public class climbCamera : MonoBehaviour
     public GameObject o3Camera;
     private int players;
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Switches camera to thisCamera when collider is triggered
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -31,6 +30,7 @@ public class climbCamera : MonoBehaviour
         }
     }
 
+    //Checks o1-3 to see if they are active before switching to main camera
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

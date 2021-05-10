@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//  Controls when dialouge is triggered
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
@@ -11,6 +13,8 @@ public class DialogueTrigger : MonoBehaviour
     private bool firstSignTriggered = false;
     private bool contact;
 
+    //Checks for input and state of dialogue when in contact with player
+    //to either start or continue the dialogue
     private void Update()
     {
         if(contact)
@@ -28,6 +32,9 @@ public class DialogueTrigger : MonoBehaviour
             }
         }
     }
+
+    //Checks if collision is between the first sign which 
+    //displays dialogue without need of input
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && firstSign && !firstSignTriggered)
@@ -36,6 +43,7 @@ public class DialogueTrigger : MonoBehaviour
             firstSignTriggered = true;
         }
     }
+    //Checks wether player is in contact with dialogue object
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -52,6 +60,7 @@ public class DialogueTrigger : MonoBehaviour
         }
 
     }
+    //Checks when player leaves contact with dialogue object
     private void OnTriggerExit2D(Collider2D collision)
     {
         contact = false;

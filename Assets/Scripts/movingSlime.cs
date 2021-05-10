@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Changes position of the slime this is attached to based on player Input
 public class movingSlime : MonoBehaviour
 {
     public GameObject leftLimit, rightLimit;
@@ -18,7 +19,8 @@ public class movingSlime : MonoBehaviour
         playerScript = FindObjectOfType<Player>();
     }
 
-
+    //Checks for contact on controller and gets player script from
+    //collision. Then checks for input to move right or left or neither.
     void Update()
     {
         if (slimeController.contact)
@@ -46,6 +48,8 @@ public class movingSlime : MonoBehaviour
         }
     }
 
+    //If moving right/left is true and the slime has
+    //enough space, calls RPC that changes positon of slime
     private void FixedUpdate()
     {
         if (movingLeft && slimeController.spaceLeft)
@@ -58,6 +62,7 @@ public class movingSlime : MonoBehaviour
         }
     }
 
+    //Checks to see if theres space to the right and left of the slime
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == leftLimit)
@@ -70,6 +75,7 @@ public class movingSlime : MonoBehaviour
         }
     }
 
+    // Checks to see if slime has stopped touching its limiter
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject == leftLimit)
@@ -82,6 +88,7 @@ public class movingSlime : MonoBehaviour
         }
     }
 
+    //Changes slime's position based on slimeSpeed
     [PunRPC]
     void moveSlimeRight()
     {

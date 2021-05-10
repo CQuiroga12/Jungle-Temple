@@ -31,6 +31,9 @@ public class Player : MonoBehaviourPun
 
     public bool qkeyDown;
 
+    //Checks if the photon view is yours and if it isnt
+    //then your rigidbody stops getting stimulated in order to 
+    //preserve fluidity of non-local characters
     private void Start()
     {
         if(photonView.IsMine)
