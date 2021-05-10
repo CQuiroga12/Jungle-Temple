@@ -14,9 +14,11 @@ public class slimeFollow : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float smoothFactor = 0.5f;
     public bool contact = false;
+    public GameObject attachedPlayer;
     private Transform targetHolder;
     public bool equipped = false;
     private PhotonView PV;
+    
 
     // Start is called before the first frame update
     private void Start()
@@ -29,7 +31,6 @@ public class slimeFollow : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             contact = true;
-
             if (!equipped)
             {
                 Debug.Log("Contact");
@@ -37,7 +38,7 @@ public class slimeFollow : MonoBehaviour
                 Debug.Log(playerScript.gameObject.name);
             }
 
-            if(equipped)
+            if(equipped && collision.gameObject!=attachedPlayer)
             {
                 Debug.Log("Bounce");
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * launchForce;
@@ -53,6 +54,7 @@ public class slimeFollow : MonoBehaviour
             targetHolder = collision.gameObject.GetComponent<Transform>();
             PV.RPC("setSlimeTarget", RpcTarget.All);
             equipped = true;
+            attachedPlayer = collision.gameObject;
         }
     }
 
@@ -80,8 +82,7 @@ public class slimeFollow : MonoBehaviour
         equipped = true;
         try
         {
-            Vector3 newPosition = target.position + new Vector3(0, offset);
-            thisTransform.position = Vector3.Slerp(thisTransform.position, newPosition, smoothFactor);
+            thisTransform.position = target.position + new Vector3(0, offset);
         } catch(System.Exception)
         {
             
