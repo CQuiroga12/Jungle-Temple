@@ -58,7 +58,7 @@ public class DialogueManger : MonoBehaviour
     }
 
     //Deactivated text box and clears sentance queue
-    void EndDialogue()
+    public void EndDialogue()
     {
         canvas.SetActive(false);
         active = false;

@@ -98,15 +98,12 @@ public class Player : MonoBehaviourPun
     }
     private void FixedUpdate()
     {
-        if (photonView.IsMine && DialogueManager.sentences.Count == 0)
+        if (photonView.IsMine)
         {
-            if (stunned) { horizontalMove = 0; }
+            if (stunned) { horizontalMove = 0; jump = false; }
             //using the CharacterController variable 'controller', .Move gives velocity to character rigidbody
             controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
             jump = false;
-        } else if(DialogueManager.sentences.Count != 0)
-        {
-            rb.velocity = Vector3.zero;
         }
     } 
     

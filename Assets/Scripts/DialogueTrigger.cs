@@ -10,7 +10,6 @@ public class DialogueTrigger : MonoBehaviour
     public DialogueManger DialogueMangager;
     public bool firstSign;
     public Player player;
-    private bool firstSignTriggered = false;
     private bool contact;
 
     //Checks for input and state of dialogue when in contact with player
@@ -37,13 +36,14 @@ public class DialogueTrigger : MonoBehaviour
     //displays dialogue without need of input
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && firstSign && !firstSignTriggered)
+        if (collision.CompareTag("Player") && firstSign)
         {
             DialogueMangager.StartDialogue(dialogue);
-            firstSignTriggered = true;
+            player = collision.GetComponent<Player>();
+            //player.stunned = true;
         }
     }
-    //Checks wether player is in contact with dialogue object
+    //Checks whether player is in contact with dialogue object and gets Player script
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -65,5 +65,9 @@ public class DialogueTrigger : MonoBehaviour
     {
         contact = false;
         player = null;
+        if(DialogueMangager.active)
+        {
+            DialogueMangager.EndDialogue();
+        }
     }
 }

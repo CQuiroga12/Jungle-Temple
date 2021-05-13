@@ -24,7 +24,11 @@ public class CameraFollow : MonoBehaviour
     //is set to the targets with interpolation
     private void LateUpdate()
     {
-        Vector3 newPosition = target.position + cameraOffset;
-        transform.position = Vector3.Slerp(transform.position, newPosition, SmoothFactor);
+        try
+        {
+            Vector3 newPosition = target.position + cameraOffset;
+            transform.position = Vector3.Slerp(transform.position, newPosition, SmoothFactor);
+        }
+        catch (System.Exception) { }
     }
 }
